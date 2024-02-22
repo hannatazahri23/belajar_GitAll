@@ -1,0 +1,100 @@
+PENGERTIAN SINGKAT: ====>>>>
+
+Version Control Sistem atau Source Code Management adalah sistem yang mengelola perubahan dari sebuah dokumen, program komputer, website dan kumpulan informasi lain.
+
+GIT adalah sebuah VCS yg terdistribusi untuk mengelola perubahan file di dalam Repository (folder). Riwayat perubahan file disimpam menggunakan serangkaian Commit. Saat Anda membuat perubahan pada berkas-berkas dalam proyek Git, Anda perlu melakukan commit untuk menyimpan snapshot dari perubahan tersebut ke dalam sejarah repositori
+
+GitHub adalah layanan cloud untuk mengelola project GIT
+
+Commit merujuk pada tindakan menyimpan perubahan dalam repositori Git.
+
+Hash adalah penanda unik pada sebuah Commit
+
+Checkout yaitu berpindah ke Branch Commit lain
+
+Branch adalah mencabang bebas dari sebuah Commit sedangkan Merge (Pull Request) menggabungkan cabang-cabang Commit.
+
+Fork adalah proses menduplikasi Repo orang lain
+
+proses mengirim commit GIT  = Push
+proses mengambil commit GIT = Pull
+**syarat Push & Pull yaitu membuat GitHub menjadi Remote (Sumber yg memiliki Repo) dan membuat Repo di dalam GitHub, dan setelah itu kita Clone Repo nya ke dalam komputer kita.
+
+file ".gitignore" adalah sebuah file yang kita gunakan untuk membuat list apa saja file/folder yang tidak ingin kita Push/kirim ke Repo GLobal kita. Caranya kita hanya perlu menuliskan nama file/folder yang tidak ingin kita Push. ("config.txt" utk Ignore salah satu file), ("data/" utk Ignore salah satu folder) & ("*.exe" utk Ignore pada semua file yg ber-ekstensi ".exe")
+
+Vim adalah code editor Git untuk menulisa sebuah Commit jika nanti pesan commit kalian panjang.
+
+=======================================================================================================================================================================
+
+Command umum wajib (utk Git Bash dulu) :
+	=> $ pwd (print working directory / utk mengecek kita lagi di folder mana)
+	=> $ cd (change directory / utk berpindah ke folder lain)
+	=> $ ls (utk menampilkan semua isi folder)
+
+Shortcut Git Bash :
+	=> Ctrl + Insert  = Copy
+	=> Shift + Insert = Paste
+	=> Alt + F3 	  = Search
+	=> Alt + F10 	  = Default Size
+	=> Alt + F11 	  = Full Screen
+	=> Alt + F12 	  = Flip Screen
+
+Command Git Bash (Untuk Local) :
+	=> $ git init (untuk menginisialisasikan folder local kita)
+	=> $ git add (untuk menambahkan file pada Staging Area/track file)
+		o> $ git add <nama filenya> (berlaku utk salah satu file saja)
+		o> $ git add . (berlaku utk semua file)
+	=> $ git rm (utk menghapus file dari Staging Area)
+		o> $ git rm --chached <nama filenya> (utk menghapus salah satu file)
+	=> $ git status (utk mengecek ada perubahan apa pada repo inisialisasi kita)
+	=> $ git config (utk melakukan konfigurasi username dan E-mail)
+		o> $ git config --global user.name "username-Mu"
+		o> $ git config --global user.email "email-Mu@gmail.com"
+		o> $ git config --list (untuk menampilkan informasi konfigurasi Git kita)
+	=> $ git commit (utk memberikan commit berupa pesan dan history)
+		o> $ git commit -m "pesan untuk repo kalian"
+		o> $ git commit -a -m "ini pesan" (utk melakukan commit pada perubahan-perubahan yang telah dilakukan pada file yang sudah di-track oleh Git.)
+		o> $ git commit -am "ini pesan" (fungsi nya sama pada command yg di atas)
+ 	=> $ git branch (utk menampilkan semua Branch)
+		o> $ git branch <nama branchMu> (utk membuat branch baru)
+		o> $ git branch -d <nama branch yg ada di repo lokal> (utk menghapus suatu branch pada repo local)
+		o> $ git branch --merged (utk mengecek branch yg telah dilakukan penyatuan/merging)
+	=> $ git merge <nama branch yg ingin di-merging> (utk melakukan penyatuan terhadap main branch terhadap direct path branch lain)
+		o> $ git merge <nama branchNya> -m "ini pesan" (utk melakukan merging sambil memberikan pesan/commit message)
+		o> $ git merge <nama branch pada 'Main Repo'>/<nama branch lain> (utk melakukan merging pada branch Main Repo ke branch yg lain [baca CATATAN 6**)
+	=> $ git log (utk melihat commit dan history commit apa saja yang pernah dilakukan)
+		o> $ git log -<angka file terakhir yg ingin dilihat)
+		o> $ git log -- <nama file> (utk melihat commit pada file tertentu)
+	=> $ git checkout (utk berpindah branch dan juga utk mengembalikan keadaan sebuah repo setelah mengalami perubahan2 commit yg ada)
+		o> $ git checkout <nama branchNya> (utk berpindah branch)
+		o> $ git checkout -b <nama branch baru> (utk membuat branch baru sekaligus pindah pada branch itu)
+		o> $ git checkout <angka code hash commit 5 digit awal> (utk mengembalikan perubahan pada commit tertentu)
+		o> $ git checkout <angka code hash commit 5 digit awal> -- <nama file> (utk mengembalikan perubahan hanya pada file di commit tertentu)
+	=> $ git clone <link URL repoMu> (untuk mengkloning suatu repository di GitHub ke dalam repository Local)
+	=> $ git remote (untuk mengelola remote repositories atau repositori yang berada di server atau lokasi jarak jauh)
+		o> $ git remote add <nama remoteNya> <link URL repo global> (untuk menambahkan remote repo baru dengan URL tertentu)
+		o> $ git remote rename <namaRemote_lama> <namaRemote_baru> (untuk mengganti nama remote repo)
+		o> $ git remote show <nama remoteNya> (untuk menampilkan informasi lebih lanjut pada remote repo tertenru)
+		o> $ git remote -v (untuk melakukan verbose/menampilkan daftar repo secara detail)
+	=> $ git push (digunakan untuk mengirimkan perubahan yang sudah di-commit dari branch lokal ke branch global)
+		o> $ git push <nama remote yg dipakai> --delete <nama branch yang ada di repo global> (utk menghapus suatu branch pada repo global)
+	=> $ git fetch (untuk mengambil dan mengecek perubahan terbaru dari repositori remote tanpa melakukan merging langsung ke branch lokal/seperti membuat cabang 	   	   baru)
+	=> $ git pull (digunakan untuk mengambil perubahan terbaru dari repo global dan menggabungkannya langsung ke repo lokal)
+	=> $ vim (utk masuk ke code editor Vim, dan cara utk keluarnya yaitu klik 'Esc' lalu ketik :q!)
+	=> $ alias <nama shortcut>="<command Git yg ingin di persingkat>"
+		o> contoh : alias graph="git log --all --decorate --oneline --graph" (utk membuat graphic network branch commit)
+
+	CATATAN!!!
+	1** jika kita mendapatkan merge conflict dari perbedaan perubahan pada repo local dengan repo global, maka kita harus melakukan "$ git fetch" dan "$ git pull" 	   	   dan setelah itu "$ git push"
+	2** jika kita telah melakukan solving pada merge conflict, kita harus melakukan "$ git add ." dan "git commit -m"
+	3** jika kita melakukan "$ git commit" pada repo global/repo GitHub, kita harus melakukan "$ git push" agar isi repo global kita sama dengan repo local-nya.
+	4** jika kita ingin menyambungkan repo local pada repo global, maka kita harus memberikan "$ git remote add <nama remoteNya> <link URL repo global>" dan 	    	    setelah itu kirim dengan "$ git push -u <nama remoteNya> <nama branchNya>"
+	5** sekira nya kita sudah pernah melakukan "$ git push -u <nama remoteNya> <nama branchNya>", maka ketika kita ingin melakukan Push tidak perlu menulisnya 	    	    ulang, cukup ketik "$ git push" saja
+	6** Jika ingin membuat GitHub Pages/hosting web statis pada GitHub harus mempunyai Repository dengan nama terakhir reponya ".github.io" & juga harus bayar atau 	    coba masa trial 30 hari. (contoh: <hfstore.github.io>) [pelajari lagi tentang GitHub pages dan cara hostingnya!!!]
+	7** jika kita ingin melakukan remote multiple, maka yg dilakukan pertama adalah "Forking" Repo yg ingin diolah (Main Repo), setelah itu kita lakukan Cloning 		    repo global ke repo local, setelah itu kita lakukan "$ git remote add <nama remote baru> <link URL Main Repo>"
+	8** jika kita melakukan remote multiple dan terdapat salah satu branch melakukan perubahan pada suatu repo remote kita, maka kita harus melakukan "$ git fetch" 	    terlebih dahulu untuk mengambil perubahan pada Repo-nya, dan jika mengalami merge conflict ikuti langkah yg di atas, dan setelah itu "$ git push"
+	9** INGAT!!!, jika kita membuat branch baru dan membuat perubahan pada repo local di branch tersebut dan ingin mengirimnya pada repo global, maka yang harus 	    	    dilakukan "$ git push <nama remote yg sedang dipakai> <nama branch yg baru dibuat>"
+
+=======================================================================================================================================================================
+
+link untuk belajar Git lengkat (E-Book Indo) = https://git-scm.com/book/id/v2
